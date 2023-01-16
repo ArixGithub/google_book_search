@@ -1,0 +1,9 @@
+.book_info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.book_modal_button {
+    left: 50%;
+    position: relative;
+}

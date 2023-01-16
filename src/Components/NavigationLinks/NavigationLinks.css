@@ -1,0 +1,9 @@
+.page_links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.page_link {
+    color: blue;
+}
