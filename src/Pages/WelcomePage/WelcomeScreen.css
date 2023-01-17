@@ -1,4 +1,11 @@
+form {
+    opacity: 0;
+    transition-duration: 0.7s;
+    transition-property: opacity;
+}
+
 .welcome_page {
+    opacity: 1;
     display: flex;
     justify-content: center;
     gap: 10px;
