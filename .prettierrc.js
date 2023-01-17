@@ -6,4 +6,5 @@ module.exports = {
   trailingComma: 'all',
   printWidth: 100,
   bracketSpacing: false,
+  ignoreComments: true,
 };

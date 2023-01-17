@@ -1,11 +1,5 @@
-form {
-    opacity: 0;
-    transition-duration: 0.7s;
-    transition-property: opacity;
-}
-
 .welcome_page {
-    opacity: 1;
+    background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
     display: flex;
     justify-content: center;
     gap: 10px;

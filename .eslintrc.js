@@ -1,7 +1,8 @@
-export default {
+module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -11,11 +12,20 @@ export default {
   ],
   overrides: [],
   parserOptions: {
+    parser: '@babel/eslint-parser',
     ecmaVersion: 'latest',
     sourceType: 'module',
+    requireConfigFile: false,
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'require-jsdoc': 'off',
+    indent: 'off',
+    'max-len': ['error', {code: 120}],
   },
+  plugins: ['react'],
 };

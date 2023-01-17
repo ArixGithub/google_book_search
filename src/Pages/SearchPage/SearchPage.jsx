@@ -11,7 +11,7 @@ const SearchPage = ({wishList, setWishList}) => {
   const MAX_NUMBER_OF_BOOKS = 20;
 
   useEffect(() => {
-    if (!!searchString) {
+    if (searchString) {
       fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${searchString}&maxResults=${MAX_NUMBER_OF_BOOKS}&startIndex=${
           pageNumber * MAX_NUMBER_OF_BOOKS
