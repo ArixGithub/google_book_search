@@ -66,29 +66,31 @@ const SearchPage = () => {
             }}
           />
         </label>
-        {!!books?.length && <ul className="book_list">{bookList}</ul>}
         {!!books?.length && (
-          <div className="pagination_buttons">
-            <button
-              className="previous"
-              disabled={pageNumber === 0} // disabled on the first page
-              onClick={() => {
-                setPageNumber((currentPage) => currentPage - 1);
-              }}
-            >
-              Previous Page
-            </button>
-            <button
-              className="next"
-              // disabled when the page holds less than 20 books (hence no more books)
-              disabled={books?.length < MAX_NUMBER_OF_BOOKS}
-              onClick={() => {
-                setPageNumber((currentPage) => currentPage + 1);
-              }}
-            >
-              Next Page
-            </button>
-          </div>
+          <>
+            <ul className="book_list">{bookList}</ul>
+            <div className="pagination_buttons">
+              <button
+                className="previous"
+                disabled={pageNumber === 0} // disabled on the first page
+                onClick={() => {
+                  setPageNumber((currentPage) => currentPage - 1);
+                }}
+              >
+                Previous Page
+              </button>
+              <button
+                className="next"
+                // disabled when the page holds less than 20 books (hence no more books)
+                disabled={books?.length < MAX_NUMBER_OF_BOOKS}
+                onClick={() => {
+                  setPageNumber((currentPage) => currentPage + 1);
+                }}
+              >
+                Next Page
+              </button>
+            </div>
+          </>
         )}
       </div>
       <BookModal
