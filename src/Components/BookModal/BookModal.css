@@ -10,17 +10,18 @@
 }
 
 .book_modal_button {
-    left: 50%;
     position: relative;
     display: inline-block;
-    background-color: rgb(111, 40, 210);
+    left: 50%;
     padding: 20px;
+    margin: 20px;
     width: 140px;
-    color: white;
     text-align: center;
     border: 4px double #cccccc;
     border-radius: 10px;
     transition: all 0.5s;
+    color: white;
+    background-color: rgb(111, 40, 210);
 }
 
 .book_modal_button:disabled {

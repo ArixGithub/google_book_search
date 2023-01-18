@@ -1,6 +1,27 @@
-.book_entry
-{
+.wishlist_page li {
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.wishlist_page li:hover {
+    background-color: gray;
+}
+
+.wish_book_info {
     display: flex;
+    width: fit-content;
+}
+
+.book_image {
+    width: 50px;
+    height: 100px;
+}
+
+.book_entry {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     gap: 10px;

@@ -14,21 +14,16 @@ export default function BookModal({book, onRequestClose, wishList, setWishList})
       isOpen={true}
       onRequestClose={onRequestClose}
       style={{
-        overlay: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.75)',
-        },
         content: {
           background: 'white',
           borderRadius: '10px',
           outline: 'none',
           boxShadow: '0px 3px 10px red',
+          maxHeight: '75%',
+          height: 'fit-content',
         },
       }}
+      closeTimeoutMS={500}
     >
       <div className="book_info">
         <div>

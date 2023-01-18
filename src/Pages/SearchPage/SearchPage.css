@@ -1,16 +1,28 @@
+.book_list {
+    border: 3px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 0;
+}
+
 .search_page li:nth-child(odd) {
-    background: rgb(233, 64, 64); 
+    background-color: rgb(233, 64, 64); 
 }
 
 .search_page li {
+    display: flex;
     list-style: none;
+    cursor: pointer;
+    min-height: 40px;
+    transition: background-color 200ms ease-in-out;
 }
 
-.search_page {
-    margin-left: 5rem;
-    padding: 1rem;
-    height: 100%;
-    color: white;
+.search_page li b{
+    padding: 10px;
+}
+
+.search_page li:hover {
+    background-color: gray;
 }
 
 .pagination_buttons {

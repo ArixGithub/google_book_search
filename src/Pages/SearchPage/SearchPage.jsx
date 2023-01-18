@@ -34,14 +34,14 @@ const SearchPage = ({wishList, setWishList}) => {
 
   useEffect(() => {
     handleChange(searchString);
-  }, [handleChange, searchString]);
+  }, [handleChange, searchString, pageNumber]);
 
   return (
     <>
       <NavigationLinks />
-      <div className="search_page">
+      <div className="search_page page">
         <label>
-          Search for books:
+          <b>Search for books:</b>
           <input
             type="text"
             className="input_styling"
@@ -50,7 +50,7 @@ const SearchPage = ({wishList, setWishList}) => {
             }}
           />
         </label>
-        <ul>
+        <ul className="book_list">
           {books?.map((book) => (
             <li
               key={book.id}
@@ -58,7 +58,7 @@ const SearchPage = ({wishList, setWishList}) => {
                 setSelectedBook(book);
               }}
             >
-              {book.volumeInfo.title}
+              <b>{book.volumeInfo.title}</b>
             </li>
           ))}
         </ul>

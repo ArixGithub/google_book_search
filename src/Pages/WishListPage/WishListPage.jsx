@@ -6,12 +6,19 @@ const WishListPage = ({wishList, setWishList}) => {
   return (
     <>
       <NavigationLinks />
-      <ul>
+      <ul className="wishlist_page page">
         {wishList?.map((book) => (
-          <div key={book.id} className="book_entry">
-            <div>
-              <b>{book.volumeInfo.title}</b>{' '}
-              {book.volumeInfo.authors && `By ${book.volumeInfo.authors}`}
+          <li key={book.id} className="book_entry">
+            <div className="wish_book_info">
+              <img
+                src={book.volumeInfo.imageLinks.thumbnail}
+                alt="not Found"
+                className="book_image"
+              />
+              <div>
+                <b>{book.volumeInfo.title}</b>{' '}
+                {book.volumeInfo.authors && ` By ${book.volumeInfo.authors}`}
+              </div>
             </div>
             <button
               onClick={() => {
@@ -22,7 +29,7 @@ const WishListPage = ({wishList, setWishList}) => {
             >
               Remove
             </button>
-          </div>
+          </li>
         ))}
       </ul>
     </>
