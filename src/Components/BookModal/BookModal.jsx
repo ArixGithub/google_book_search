@@ -22,7 +22,6 @@ function BookModal({book, onRequestClose, wishList, setWishList}) {
           height: 'fit-content',
         },
       }}
-      closeTimeoutMS={500}
     >
       <div className="book_info">
         <div>

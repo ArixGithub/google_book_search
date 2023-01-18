@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import BookModal from '../../Components/BookModal/BookModal';
 import NavigationLinks from '../../Components/NavigationLinks/NavigationLinks';
 import './SearchPage.css';
@@ -11,30 +11,46 @@ const SearchPage = ({wishList, setWishList}) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const MAX_NUMBER_OF_BOOKS = 20;
 
-  function handleNewSearch(newSearchString) {
-    if (newSearchString) {
-      fetch(
-        // eslint-disable-next-line max-len
-        `https://www.googleapis.com/books/v1/volumes?q=${newSearchString}&maxResults=${MAX_NUMBER_OF_BOOKS}&startIndex=${
-          pageNumber * MAX_NUMBER_OF_BOOKS
-        }`,
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          // we want to use 'data.totalItems' for pagination but we can't, for 2 reasons:
-          // 1. The totalItems value is different every time for any new startIndex and maxResults.
-          // 2. The totalItems value seems to be very inaccurate at best.
-          // see: https://github.com/evdhiggins/book-inquiry
-          setBooks(data.items);
-        });
-    }
-  }
+  const handleNewSearch = useCallback(
+    (newSearchString) => {
+      if (newSearchString) {
+        fetch(
+          // eslint-disable-next-line max-len
+          `https://www.googleapis.com/books/v1/volumes?q=${newSearchString}&maxResults=${MAX_NUMBER_OF_BOOKS}&startIndex=${
+            pageNumber * MAX_NUMBER_OF_BOOKS
+          }`,
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            // we want to use 'data.totalItems' for pagination but we can't, for 2 reasons:
+            // 1. The totalItems value is different every time for any new startIndex and maxResults.
+            // 2. The totalItems value seems to be very inaccurate at best.
+            // see: https://github.com/evdhiggins/book-inquiry
+            setBooks(data.items);
+          });
+      }
+    },
+    [pageNumber],
+  );
 
   const handleChange = useDebouncedCallback(handleNewSearch, 200);
 
   useEffect(() => {
     handleChange(searchString);
-  }, [handleChange, searchString, pageNumber]);
+  }, [handleChange, searchString, handleNewSearch]);
+
+  const bookList = useMemo(() => {
+    return books?.map((book) => (
+      <li
+        key={book.id}
+        onClick={() => {
+          setSelectedBook(book);
+        }}
+      >
+        <b>{book.volumeInfo.title}</b>
+      </li>
+    ));
+  }, [books]);
 
   return (
     <>
@@ -50,18 +66,7 @@ const SearchPage = ({wishList, setWishList}) => {
             }}
           />
         </label>
-        <ul className="book_list">
-          {books?.map((book) => (
-            <li
-              key={book.id}
-              onClick={() => {
-                setSelectedBook(book);
-              }}
-            >
-              <b>{book.volumeInfo.title}</b>
-            </li>
-          ))}
-        </ul>
+        {!!books?.length && <ul className="book_list">{bookList}</ul>}
         {!!books?.length && (
           <div className="pagination_buttons">
             <button
@@ -97,4 +102,4 @@ const SearchPage = ({wishList, setWishList}) => {
   );
 };
 
-export default SearchPage;
+export default React.memo(SearchPage);
