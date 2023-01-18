@@ -9,8 +9,9 @@ import {
   faAngleDoubleRight,
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
-export default function NavigationLinks() {
+function NavigationLinks() {
   const [searchParams] = useSearchParams();
   const userName = searchParams.get('username');
 
@@ -45,3 +46,5 @@ export default function NavigationLinks() {
     </nav>
   );
 }
+
+export default React.memo(NavigationLinks);
