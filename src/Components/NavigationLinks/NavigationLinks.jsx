@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faSearch,
   faStar,
-  faAngleDoubleRight,
+  faBookReader,
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import React, {useContext} from 'react';
@@ -17,30 +17,30 @@ function NavigationLinks() {
   const userName = searchParams.get('username');
 
   return (
-    <nav className="navbar">
-      <ul className="navbar-nav">
+    <nav className="navbar_container">
+      <ul className="navbar_nav">
         <li className="logo">
-          <div className="nav-link">
-            <span className="link-text logo-text">Welcome, {userName}</span>
-            <FontAwesomeIcon icon={faAngleDoubleRight} size="xl" />
+          <div className="navbar_link">
+            <span className="nav_link_text welcome_text">Welcome, {userName}</span>
+            <FontAwesomeIcon icon={faBookReader} size="xl" />
           </div>
         </li>
-        <li className="nav-item">
-          <Link className="page_link nav-link" to={`/search?username=${userName}`}>
+        <li className="nav_item">
+          <Link className="page_link navbar_link" to={`/search?username=${userName}`}>
             <FontAwesomeIcon icon={faSearch} size="xl" />
-            <span className="link-text">Search</span>
+            <span className="nav_link_text">Search</span>
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="page_link nav-link" to={`/wishlist?username=${userName}`}>
+        <li className="nav_item">
+          <Link className="page_link navbar_link" to={`/wishlist?username=${userName}`}>
             <FontAwesomeIcon icon={faStar} size="xl" />
-            <span className="link-text">Wish List ({wishList?.length})</span>
+            <span className="nav_link_text">Wish List ({wishList?.length})</span>
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="page_link nav-link" to={`/`}>
+        <li className="nav_item">
+          <Link className="page_link navbar_link" to={`/`}>
             <FontAwesomeIcon icon={faRightFromBracket} size="xl" />
-            <span className="link-text">Log Out</span>
+            <span className="nav_link_text">Log Out</span>
           </Link>
         </li>
       </ul>
