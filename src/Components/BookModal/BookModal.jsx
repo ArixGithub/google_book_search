@@ -1,9 +1,8 @@
 import Modal from 'react-modal';
+import React from 'react';
 import './BookModal.css';
 
-Modal.setAppElement(document.body);
-
-export default function BookModal({book, onRequestClose, wishList, setWishList}) {
+function BookModal({book, onRequestClose, wishList, setWishList}) {
   if (!book) return;
 
   const isBookAlreadyWishListed = wishList?.map((wishBook) => wishBook.id)?.includes(book.id);
@@ -51,3 +50,5 @@ export default function BookModal({book, onRequestClose, wishList, setWishList})
     </Modal>
   );
 }
+
+export default React.memo(BookModal);

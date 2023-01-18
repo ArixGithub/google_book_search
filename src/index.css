@@ -16,11 +16,10 @@ code {
   min-height: 100%;
   min-width: 100%;
   position: absolute;
-  background-image: linear-gradient(rgba(0,8,51,0.9),rgba(0, 8, 51, 0.9)), url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Swiss_National_Park_131.JPG);
+  background-image: linear-gradient(rgba(0,8,51,0.9),rgba(87, 2, 102, 0.9)), url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Swiss_National_Park_131.JPG);
   background-repeat: repeat;
 
-  --transition-speed: 600ms;
-  --input-border-color: #00B4CC;
+  --input-border-color: #0397aa;
 
   --button-color: rgb(111, 40, 210);
   --button-color-hover: rgb(77, 24, 150);

@@ -62,14 +62,6 @@ const SearchPage = ({wishList, setWishList}) => {
             </li>
           ))}
         </ul>
-        <BookModal
-          book={selectedBook}
-          onRequestClose={() => {
-            setSelectedBook(null);
-          }}
-          setWishList={setWishList}
-          wishList={wishList}
-        />
         {!!books?.length && (
           <div className="pagination_buttons">
             <button
@@ -93,6 +85,14 @@ const SearchPage = ({wishList, setWishList}) => {
           </div>
         )}
       </div>
+      <BookModal
+        book={selectedBook}
+        onRequestClose={() => {
+          setSelectedBook(null);
+        }}
+        setWishList={setWishList}
+        wishList={wishList}
+      />
     </>
   );
 };

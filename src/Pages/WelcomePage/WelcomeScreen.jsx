@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import './WelcomeScreen.css';
 
-const WelcomeScreen = ({userName, setUsername}) => {
+const WelcomeScreen = () => {
   const [error, setError] = useState('');
+  const [userName, setUsername] = useState('');
+
   const navigate = useNavigate();
 
   function handleSubmit(event) {
