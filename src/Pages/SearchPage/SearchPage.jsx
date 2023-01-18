@@ -1,10 +1,12 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState, useContext} from 'react';
 import BookModal from '../../Components/BookModal/BookModal';
 import NavigationLinks from '../../Components/NavigationLinks/NavigationLinks';
 import './SearchPage.css';
 import {useDebouncedCallback} from 'use-debounce';
+import {WishListContext} from '../../context/WishListContext';
 
-const SearchPage = ({wishList, setWishList}) => {
+const SearchPage = () => {
+  const {wishList, setWishList} = useContext(WishListContext);
   const [books, setBooks] = useState([]);
   const [searchString, setSearchString] = useState('');
   const [pageNumber, setPageNumber] = useState(0);
@@ -80,7 +82,8 @@ const SearchPage = ({wishList, setWishList}) => {
             </button>
             <button
               className="next"
-              disabled={books?.length < 19} // disabled when the page holds less than 20 books (hence no more books)
+              // disabled when the page holds less than 20 books (hence no more books)
+              disabled={books?.length < MAX_NUMBER_OF_BOOKS}
               onClick={() => {
                 setPageNumber((currentPage) => currentPage + 1);
               }}

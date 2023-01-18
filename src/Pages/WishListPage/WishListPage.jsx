@@ -1,14 +1,16 @@
-import React, {useMemo} from 'react';
+import React, {useContext, useMemo} from 'react';
 import NavigationLinks from '../../Components/NavigationLinks/NavigationLinks';
+import {WishListContext} from '../../context/WishListContext';
 import './WishListPage.css';
 
-const WishListPage = ({wishList, setWishList}) => {
+const WishListPage = () => {
+  const {wishList, setWishList} = useContext(WishListContext);
   const wishedBooks = useMemo(() => {
     return wishList?.map((book) => (
       <li key={book.id}>
         <div className="wish_book_info">
           <img src={book.volumeInfo.imageLinks.thumbnail} alt="not Found" className="book_image" />
-          <div>
+          <div className="book_title_author_info">
             <b>{book.volumeInfo.title}</b>
             <br></br>
             {book.volumeInfo.authors && `By ${book.volumeInfo.authors}`}

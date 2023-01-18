@@ -20,9 +20,9 @@ const WelcomeScreen = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={'welcome_page'}>
+    <form onSubmit={handleSubmit} className={'page'}>
       <label>
-        Please Enter a Username:
+        <b>Please Enter a Username:</b>
         <input
           type="text"
           value={userName}
