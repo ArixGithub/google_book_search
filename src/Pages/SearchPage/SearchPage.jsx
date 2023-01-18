@@ -1,12 +1,10 @@
-import React, {useCallback, useEffect, useMemo, useState, useContext} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import BookModal from '../../Components/BookModal/BookModal';
 import NavigationLinks from '../../Components/NavigationLinks/NavigationLinks';
 import './SearchPage.css';
 import {useDebouncedCallback} from 'use-debounce';
-import {WishListContext} from '../../context/WishListContext';
 
 const SearchPage = () => {
-  const {wishList, setWishList} = useContext(WishListContext);
   const [books, setBooks] = useState([]);
   const [searchString, setSearchString] = useState('');
   const [pageNumber, setPageNumber] = useState(0);
@@ -98,8 +96,6 @@ const SearchPage = () => {
         onRequestClose={() => {
           setSelectedBook(null);
         }}
-        setWishList={setWishList}
-        wishList={wishList}
       />
     </>
   );

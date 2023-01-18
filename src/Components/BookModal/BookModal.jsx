@@ -1,11 +1,15 @@
 import Modal from 'react-modal';
-import React from 'react';
+import React, {useMemo, useContext} from 'react';
 import './BookModal.css';
+import {WishListContext} from '../../context/WishListContext';
 
-function BookModal({book, onRequestClose, wishList, setWishList}) {
+function BookModal({book, onRequestClose}) {
   if (!book) return;
+  const {wishList, setWishList} = useContext(WishListContext);
 
-  const isBookAlreadyWishListed = wishList?.map((wishBook) => wishBook.id)?.includes(book.id);
+  const isBookAlreadyWishListed = useMemo(() => {
+    return wishList?.map((wishBook) => wishBook.id)?.includes(book.id);
+  }, [wishList]);
   const {title, description, authors, publishedDate, imageLinks} = book.volumeInfo;
 
   return (

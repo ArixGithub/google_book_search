@@ -6,7 +6,7 @@
 }
 
 .search_page li:nth-child(odd) {
-    background-color: rgb(233, 64, 64); 
+    background-color: purple; 
 }
 
 .search_page li {
@@ -17,7 +17,7 @@
     transition: background-color 200ms ease-in-out;
 }
 
-.search_page li b{
+.search_page li b {
     padding: 10px;
 }
 
@@ -27,6 +27,6 @@
 
 .pagination_buttons {
     display: flex;
-    gap: 10px;
     justify-content: center;
+    gap: 10px;
 }

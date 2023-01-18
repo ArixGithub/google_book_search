@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import {Link} from 'react-router-dom';
 import './NavigationLinks.css';
 import {useSearchParams} from 'react-router-dom';
@@ -9,10 +8,12 @@ import {
   faAngleDoubleRight,
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, {useContext} from 'react';
+import {WishListContext} from '../../context/WishListContext';
 
 function NavigationLinks() {
   const [searchParams] = useSearchParams();
+  const {wishList} = useContext(WishListContext);
   const userName = searchParams.get('username');
 
   return (
@@ -33,7 +34,7 @@ function NavigationLinks() {
         <li className="nav-item">
           <Link className="page_link nav-link" to={`/wishlist?username=${userName}`}>
             <FontAwesomeIcon icon={faStar} size="xl" />
-            <span className="link-text">Wish List</span>
+            <span className="link-text">Wish List ({wishList?.length})</span>
           </Link>
         </li>
         <li className="nav-item">

@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {WishListContext} from '../../context/WishListContext';
 import './WelcomeScreen.css';
 
 const WelcomeScreen = () => {
   const [error, setError] = useState('');
   const [userName, setUsername] = useState('');
-
+  const {setWishList} = useContext(WishListContext);
   const navigate = useNavigate();
 
   function handleSubmit(event) {
@@ -18,6 +19,10 @@ const WelcomeScreen = () => {
     setError('');
     navigate(`/search?username=${userName}`);
   }
+
+  useEffect(() => {
+    setWishList([]);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit} className={'page'}>
