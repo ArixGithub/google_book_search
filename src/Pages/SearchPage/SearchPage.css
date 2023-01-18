@@ -2,6 +2,17 @@ li:nth-child(odd) {
     background: rgb(196, 196, 196); 
 }
 
+.search_page {
+    margin-left: 5rem;
+    padding: 1rem;
+    height: 100%;
+    color: white;
+}
+
+.search_input {
+    border-radius: 4px;
+}
+
 .pagination_buttons {
     display: flex;
     gap: 10px;

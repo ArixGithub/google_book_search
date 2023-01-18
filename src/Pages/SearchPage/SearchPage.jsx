@@ -31,57 +31,60 @@ const SearchPage = ({wishList, setWishList}) => {
   return (
     <>
       <NavigationLinks />
-      <label>
-        Search for books:
-        <input
-          type="text"
-          onChange={(e) => {
-            setSearchString(e.target.value);
+      <div className="search_page">
+        <label>
+          Search for books:
+          <input
+            type="text"
+            className="search_input"
+            onChange={(e) => {
+              setSearchString(e.target.value);
+            }}
+          />
+        </label>
+        <ul>
+          {books?.map((book) => (
+            <li
+              key={book.id}
+              onClick={() => {
+                setSelectedBook(book);
+              }}
+            >
+              {book.volumeInfo.title}
+            </li>
+          ))}
+        </ul>
+        <BookModal
+          book={selectedBook}
+          onRequestClose={() => {
+            setSelectedBook(null);
           }}
+          setWishList={setWishList}
+          wishList={wishList}
         />
-      </label>
-      <ul>
-        {books?.map((book) => (
-          <li
-            key={book.id}
-            onClick={() => {
-              setSelectedBook(book);
-            }}
-          >
-            {book.volumeInfo.title}
-          </li>
-        ))}
-      </ul>
-      <BookModal
-        book={selectedBook}
-        onRequestClose={() => {
-          setSelectedBook(null);
-        }}
-        setWishList={setWishList}
-        wishList={wishList}
-      />
-      {!!books?.length && (
-        <div className="pagination_buttons">
-          <button
-            className="previous"
-            disabled={pageNumber === 0} // disabled on the first page
-            onClick={() => {
-              setPageNumber((currentPage) => currentPage - 1);
-            }}
-          >
-            Previous Page
-          </button>
-          <button
-            className="next"
-            disabled={books?.length < 19} // disabled when the page holds less than 20 books (hence no more books)
-            onClick={() => {
-              setPageNumber((currentPage) => currentPage + 1);
-            }}
-          >
-            Next Page
-          </button>
-        </div>
-      )}
+        {!!books?.length && (
+          <div className="pagination_buttons">
+            <button
+              className="previous"
+              disabled={pageNumber === 0} // disabled on the first page
+              onClick={() => {
+                setPageNumber((currentPage) => currentPage - 1);
+              }}
+            >
+              Previous Page
+            </button>
+            <button
+              className="next"
+              disabled={books?.length < 19} // disabled when the page holds less than 20 books (hence no more books)
+              onClick={() => {
+                setPageNumber((currentPage) => currentPage + 1);
+              }}
+            >
+              Next Page
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 };
