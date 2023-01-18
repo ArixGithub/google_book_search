@@ -3,6 +3,7 @@ import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import WelcomeScreen from './Pages/WelcomePage/WelcomeScreen';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import WishListPage from './Pages/WishListPage/WishListPage';
+import './App.css';
 
 function App() {
   const [wishList, setWishList] = useState([]);

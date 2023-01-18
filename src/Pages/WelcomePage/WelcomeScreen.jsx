@@ -20,11 +20,16 @@ const WelcomeScreen = ({userName, setUsername}) => {
   return (
     <form onSubmit={handleSubmit} className={'welcome_page'}>
       <label>
-        Username:
-        <input type="text" value={userName} onChange={(e) => setUsername(e.target.value)} />
+        Please Enter a Username:
+        <input
+          type="text"
+          value={userName}
+          onChange={(e) => setUsername(e.target.value)}
+          className="input_styling"
+        />
       </label>
       {error && <p>{error}</p>}
-      <button type="submit">Continue</button>
+      <button type="submit">Enter</button>
     </form>
   );
 };

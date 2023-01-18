@@ -36,7 +36,7 @@ const SearchPage = ({wishList, setWishList}) => {
           Search for books:
           <input
             type="text"
-            className="search_input"
+            className="input_styling"
             onChange={(e) => {
               setSearchString(e.target.value);
             }}

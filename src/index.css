@@ -19,4 +19,8 @@ code {
   background-image: linear-gradient(rgba(0,8,51,0.9),rgba(0, 8, 51, 0.9)), url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Swiss_National_Park_131.JPG);
   
   --transition-speed: 600ms;
+  --input-border-color: #00B4CC;
+
+  --button-color: rgb(111, 40, 210);
+  --button-color-hover: rgb(77, 24, 150);
 }

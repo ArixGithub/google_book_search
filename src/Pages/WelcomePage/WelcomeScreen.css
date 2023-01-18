@@ -1,6 +1,9 @@
 .welcome_page {
-    background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
     display: flex;
     justify-content: center;
     gap: 10px;
+    color: white;
+    width: 100%;
+    height: 100%;
+    align-items: center;
 }

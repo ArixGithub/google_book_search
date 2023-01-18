@@ -5,5 +5,23 @@
 
 .book_modal_button {
     left: 50%;
+    bottom: 10%;
     position: relative;
+    display: inline-block;
+    background-color: rgb(111, 40, 210);
+    padding: 20px;
+    width: 140px;
+    color: #ffffff;
+    text-align: center;
+    border: 4px double #cccccc;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+
+.book_modal_button:disabled {
+    background-color: gray;
+}
+
+.book_modal_button:hover:enabled {
+    background-color: rgb(77, 24, 150);
 }
