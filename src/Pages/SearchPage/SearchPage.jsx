@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import BookModal from '../../Components/BookModal/BookModal';
 import NavigationLinks from '../../Components/NavigationLinks/NavigationLinks';
 import './SearchPage.css';
+import {useDebouncedCallback} from 'use-debounce';
 
 const SearchPage = ({wishList, setWishList}) => {
   const [books, setBooks] = useState([]);
@@ -10,10 +11,11 @@ const SearchPage = ({wishList, setWishList}) => {
   const [selectedBook, setSelectedBook] = useState(null);
   const MAX_NUMBER_OF_BOOKS = 20;
 
-  useEffect(() => {
-    if (searchString) {
+  function handleNewSearch(newSearchString) {
+    if (newSearchString) {
       fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchString}&maxResults=${MAX_NUMBER_OF_BOOKS}&startIndex=${
+        // eslint-disable-next-line max-len
+        `https://www.googleapis.com/books/v1/volumes?q=${newSearchString}&maxResults=${MAX_NUMBER_OF_BOOKS}&startIndex=${
           pageNumber * MAX_NUMBER_OF_BOOKS
         }`,
       )
@@ -26,7 +28,13 @@ const SearchPage = ({wishList, setWishList}) => {
           setBooks(data.items);
         });
     }
-  }, [pageNumber, searchString]);
+  }
+
+  const handleChange = useDebouncedCallback(handleNewSearch, 200);
+
+  useEffect(() => {
+    handleChange(searchString);
+  }, [handleChange, searchString]);
 
   return (
     <>

@@ -14,8 +14,8 @@ button {
     display: inline-block;
     background-color: var(--button-color);
     padding: 20px;
-    width: 140px;
-    color: #ffffff;
+    min-width: 80px;
+    color: white;
     text-align: center;
     border: 4px double #cccccc;
     border-radius: 10px;
@@ -28,4 +28,5 @@ button:disabled {
 
 button:hover:enabled {
     background-color: var(--button-color-hover);
+    cursor: pointer;
 }
