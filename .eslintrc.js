@@ -27,5 +27,6 @@ module.exports = {
     indent: 'off',
     'max-len': ['error', {code: 120}],
   },
+  ignorePatterns: ['dist', '*.js'],
   plugins: ['react'],
 };
