@@ -8,7 +8,7 @@ const WishListPage = ({wishList, setWishList}) => {
       <NavigationLinks />
       <ul className="wishlist_page page">
         {wishList?.map((book) => (
-          <li key={book.id} className="book_entry">
+          <li key={book.id}>
             <div className="wish_book_info">
               <img
                 src={book.volumeInfo.imageLinks.thumbnail}
